@@ -1,7 +1,4 @@
 <?php
-
-
-
 $allowed_methods = array(
     'people',
     'planets',
@@ -10,7 +7,7 @@ $allowed_methods = array(
 
 class Apis{
 
-    public static function people(){
+    public static function people(){                //For fetching people data
         $curl = curl_init();
         $response_array =[];
         $i=0;
@@ -29,7 +26,7 @@ class Apis{
         curl_close($curl);
     }
 
-    public static function planets(){
+    public static function planets(){               //For fetching planet data
         $curl = curl_init();
         $response_array =[]; 
         $i=0;
@@ -48,7 +45,7 @@ class Apis{
         curl_close($curl);
     }
     
-    public static function starships(){
+    public static function starships(){             //For fetching starship data
         $curl = curl_init();
         $response_array =[];
         $i=0;

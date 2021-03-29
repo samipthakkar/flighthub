@@ -8,14 +8,13 @@ function App() {
   const[peopleList, setPeopleList] = useState([]);
   const[planetList, setPlanetList] = useState([]);
   const[starshipList, setStarshipList] = useState([]);
-  const[searchWord, setSearchWord] = useState('')
+  const[searchWord, setSearchWord] = useState('');
   useEffect  (()=>{
-    
+    //any data needed at loading of page cold be called here by method
   }, [])
 
   const loadPeople = () => {
-    
-    fetch("http://localhost:8001/rest/?action=Apis&type=people")
+    fetch("http://localhost:8001/rest/?action=Apis&type=people")    //Change the URL localhost value to your own for API to run
     .then(response => {
       response.text()
       .then(_data => {
@@ -32,7 +31,7 @@ function App() {
   }
 
   const loadPlanets = () => {
-    fetch("http://localhost:8001/rest/?action=Apis&type=planets")
+    fetch("http://localhost:8001/rest/?action=Apis&type=planets")   //Change the URL localhost value to your own for API to run
     .then(response => {
       response.text()
       .then(_data => {
@@ -49,7 +48,7 @@ function App() {
   }
 
   const loadStarships = () => {
-    fetch("http://localhost:8001/rest/?action=Apis&type=starships")
+    fetch("http://localhost:8001/rest/?action=Apis&type=starships")   //Change the URL localhost value to your own for API to run
     .then(response => {
       response.text()
       .then(_data => {
@@ -81,7 +80,6 @@ function App() {
   `
 
   function viewPeople(){
-    
     loadPeople()
     //alert(peopleList)
   }
@@ -100,9 +98,9 @@ function App() {
         <Button onClick={viewPeople}> Display List of People </Button>
         <Button onClick={viewPlanets}> Display List of Planets </Button>
         <Button onClick={viewStarships}> Display List of Starships </Button>
-        <input className="searchbox" type="text" placeholder="Search People Here.." onChange={event => {setSearchWord(event.target.value)}}/>
+        <input className="searchbox" type="text" placeholder="Search People Here.." onChange={event => {setSearchWord(event.target.value)}}/>    
         {
-          peopleList.filter((val)=>{
+          peopleList.filter((val)=>{        //searches through dynamically
             if(searchWord == ""){
               return ""
             }
@@ -117,7 +115,7 @@ function App() {
       </div>
       <div className="row">
           <div id="people">
-          <p><b>List of People</b></p><List list={peopleList}></List>
+          <p><b>List of People</b></p><List list={peopleList}></List>        
           </div>
         <div id="planet">
         <p><b>List of Planets</b></p><List list={planetList}></List>
@@ -126,10 +124,7 @@ function App() {
         <p><b>List of Starships</b></p><List list={starshipList}></List>
         </div> 
       </div> 
-      
     </div>
-    
   );
 }
-
 export default App;
